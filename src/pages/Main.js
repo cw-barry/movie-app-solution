@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
-import { AuthContext } from "../context/AuthContext";
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import MovieCard from '../components/MovieCard';
+import { AuthContext } from '../context/AuthContext';
 
 // const API_KEY = "d6278b3dc3e6f8f8376a89851c3f8c8f";
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
@@ -10,10 +10,11 @@ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
+    console.log(API_KEY);
     getMovies(FEATURED_API);
   }, []);
 
@@ -29,11 +30,11 @@ const Main = () => {
     if (searchTerm && currentUser) {
       getMovies(SEARCH_API + searchTerm);
     } else if (!currentUser) {
-      alert("Please log in to search a movie.");
+      alert('Please log in to search a movie.');
     } else {
-      alert("Please enter text.");
+      alert('Please enter text.');
     }
-    setSearchTerm("");
+    setSearchTerm('');
   };
 
   return (

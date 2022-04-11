@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import VideoSection from "../components/VideoSection";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+import VideoSection from '../components/VideoSection';
 
 export function MovieDetail() {
   const [movieDetails, setMovieDetails] = useState();
@@ -10,12 +10,14 @@ export function MovieDetail() {
   console.log(movieDetails);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
+  console.log(API_KEY);
   // const API_KEY = "d6278b3dc3e6f8f8376a89851c3f8c8f";
   const movieDetailBaseUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
   const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
-  const baseImageUrl = "https://image.tmdb.org/t/p/w500";
+  const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
 
   useEffect(() => {
+    console.log(API_KEY);
     axios
       .get(movieDetailBaseUrl)
       .then((res) => setMovieDetails(res.data))
@@ -46,13 +48,13 @@ export function MovieDetail() {
             </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                {"Release Date : " + movieDetails?.release_date}
+                {'Release Date : ' + movieDetails?.release_date}
               </li>
               <li className="list-group-item">
-                {"Rate : " + movieDetails?.vote_average}
+                {'Rate : ' + movieDetails?.vote_average}
               </li>
               <li className="list-group-item">
-                {"Total Vote : " + movieDetails?.vote_count}
+                {'Total Vote : ' + movieDetails?.vote_count}
               </li>
               <li className="list-group-item">
                 <Link to={-1} className="card-link">
