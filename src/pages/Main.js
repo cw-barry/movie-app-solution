@@ -14,7 +14,6 @@ const Main = () => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(API_KEY);
     getMovies(FEATURED_API);
   }, []);
 
